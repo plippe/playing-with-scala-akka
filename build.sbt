@@ -15,3 +15,7 @@ libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0
 
 // Adds additional packages into conf/routes
 // play.sbt.routes.RoutesKeys.routesImport += "com.github.plippe.binders._"
+
+libraryDependencies += "com.github.tototoshi" %% "scala-csv" % "1.3.6"
+libraryDependencies += "com.typesafe.play" %% "play-mailer" % "8.0.0"
+libraryDependencies += "com.typesafe.play" %% "play-mailer-guice" % "8.0.0"
