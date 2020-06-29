@@ -8,6 +8,7 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala)
 scalaVersion := "2.13.2"
 
 libraryDependencies += guice
+libraryDependencies += ws
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test
 
 // Adds additional packages into Twirl
@@ -17,5 +18,3 @@ libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0
 // play.sbt.routes.RoutesKeys.routesImport += "com.github.plippe.binders._"
 
 libraryDependencies += "com.github.tototoshi" %% "scala-csv" % "1.3.6"
-libraryDependencies += "com.typesafe.play" %% "play-mailer" % "8.0.0"
-libraryDependencies += "com.typesafe.play" %% "play-mailer-guice" % "8.0.0"

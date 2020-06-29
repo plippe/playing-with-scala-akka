@@ -9,7 +9,6 @@ GET     /                           controllers.HomeController.index
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 
-GET  /records      records.RecordsController.get
-
-POST /requests     requests.RequestsController.post
-GET  /requests/:id requests.RequestsController.getById(id: java.util.UUID)
+GET    /decks/request/:id decks.requests.DeckRequestsController.getById(id: java.util.UUID)
+POST   /decks/request     decks.requests.DeckRequestsController.post
+GET    /decks/:id         decks.DecksController.getById(id: java.util.UUID)

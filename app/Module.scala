@@ -4,10 +4,10 @@ import play.api.libs.concurrent.AkkaGuiceSupport
 class Module extends AbstractModule with AkkaGuiceSupport {
 
   override def configure() = {
-    bind(classOf[records.RecordsDao]).to(classOf[records.RandomRecordsDao])
-    bind(classOf[files.FilesDao]).to(classOf[files.TemporaryFilesDao])
+    bind(classOf[decks.DecksDao]).to(classOf[decks.DecksDaoMap])
+    bind(classOf[decks.requests.DeckRequestsDao]).to(classOf[decks.requests.DeckRequestsDaoMap])
 
-    bindActor[requests.RequestActor](requests.RequestActor.name)
+    bindActor[decks.requests.DeckRequestsActor](decks.requests.DeckRequestsActor.name)
   }
 
 }
