@@ -29,7 +29,7 @@ class DeckRequestsActor @Inject()(
             .map(_.map { case (k, v) => k.trim -> v.trim })
             .map(cards.CardReference.fromCsv)
             .map {
-              case Left(exceptions) => Future.failed(exceptions.head)
+              case Left(exceptions) => Future.failed(exceptions)
               case Right(reference) => cards.Card.fromReference(client, reference)
             }
             .pipe(Future.sequence(_))

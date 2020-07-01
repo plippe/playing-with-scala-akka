@@ -34,15 +34,14 @@ case class CardReference(
 )
 
 object CardReference {
-  def fromCsv(csv: Map[String, String]): Either[List[Throwable], CardReference] = {
-    val card = csv.get("card").toRight(List(new Throwable("Missing header: card")))
-    val set = csv.get("set").toRight(List(new Throwable("Missing header: set")))
+  def fromCsv(csv: Map[String, String]): Either[Throwable, CardReference] = {
+    val card = csv.get("card").toRight(new Throwable("Missing header: card"))
+    val set = csv.get("set").toRight(new Throwable("Missing header: set"))
 
     (card, set) match {
       case (Right(card), Right(set)) => Right(CardReference(card, set))
-      case (cardException, setException) =>
-        val exceptions = cardException.left.getOrElse(List.empty) ++ setException.left.getOrElse(List.empty)
-        Left(exceptions)
+      case (Left(cardException), _) => Left(cardException)
+      case (_, Left(setException)) => Left(setException)
     }
   }
 }
